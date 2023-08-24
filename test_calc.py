@@ -14,7 +14,11 @@ class TestCalc(unittest.TestCase):
 
     def test_divide(self):
         self.assertEqual(calc.divide(4,2), 2)
-        self.assertRaises(calc.divide(4,0), )
+        # self.assertRaises(ValueError, calc.divide, 4, 0)
+
+        # use context manager
+        with self.assertRaises(ValueError):
+            calc.divide(4, 0)
 
 if __name__ == '__main__':
     unittest.main()
